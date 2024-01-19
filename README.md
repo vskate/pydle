@@ -25,6 +25,8 @@ The game was written as a Project for my Introduction to Programming class at Un
 - unit tests
 - corect `wordle` functionality
 
+> wordle > https://www.nytimes.com/games/wordle/index.html
+
 ### Accomplished:
 
 - [ ] Podział na pliki
