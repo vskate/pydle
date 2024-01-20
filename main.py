@@ -63,6 +63,9 @@ def correct(key, test, words, tries):
     print("list of words tried: ")
     print_tries(words, key)
 
+    print("Type anything to go back to the menu: ", end="")
+    input()
+
 
 
 
@@ -75,7 +78,7 @@ def game():
     letters_used = []
     words = []
 
-    while tries >= 0 :
+    while tries > 0 :
         clear_screen()
         print(f"key = {key}")
         print_game_menu(tries, letters_used)
@@ -84,18 +87,32 @@ def game():
         test = input("Input your try (5 letter word): ").lower()
 
         if test == key:
-            correct(key, test, words, tries)
+            return True, key, test, words, tries
         
         if test in valid and len(test)==5:
             words.append(test)
             for a in range(len(test)):
                 if test[a] not in letters_used:
                     letters_used.append(test[a])
-            if test == key:
-                correct(key, test, words, tries)
             tries -= 1
         else:
             print("Incorrect word")
+
+    clear_screen()
+    red()
+    print("YOU LOST!")
+    reset()
+    print(f"Correct word: ", end="")
+    green()
+    print(key)
+    reset()
+    
+    print("Your guesses:")
+    print_tries(words, key)
+
+    print("press any key to go back to the menu: ", end="")
+    input()
+    return False, key, test, words, tries
 
         
               
@@ -108,7 +125,9 @@ while True:
         break
     elif opt == '1':
         clear_screen()
-        game()
+        won, key, test, words, tries = game()
+        if won:
+            correct(key, test, words, tries)
     elif opt == '2':
         clear_screen()
         scoreboard()

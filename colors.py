@@ -6,6 +6,9 @@ def green():
 def yellow():
     print("\033[93m", end="")
 
+def red():
+    print("\033[31m", end="")
+
 def clear_screen():
     print("\033[H\033[J", end="")
 
