@@ -25,8 +25,9 @@ def print_menu():
 def print_game_menu(tries, letters_used):
     print(f"Tries left: {tries}")
     print("Letters used: ", end="")
+    letters_used.sort()
     for a in letters_used:
-        print(a, end="")
+        print(a, end=" ")
     print("\n")
 
 def print_tries(words, key):
@@ -79,28 +80,17 @@ def game():
         print(f"key = {key}")
         print_game_menu(tries, letters_used)
         print_tries(words, key)
-        """for i in words:
-            curr = []
-            for j in range(len(i)):
-                curr.append(i[j])
-            for x in range(5):
-                if curr[x] in key:
-                    if curr[x] == key[x]:
-                        green()
-                        print(curr[x], end=" ")
-                        reset()
-                    else:
-                        yellow()
-                        print(curr[x], end=" ")
-                        reset()
-                else:
-                    print(curr[x], end=" ")
-            print("")"""
                     
         test = input("Input your try (5 letter word): ").lower()
+
+        if test == key:
+            correct(key, test, words, tries)
         
         if test in valid and len(test)==5:
             words.append(test)
+            for a in range(len(test)):
+                if test[a] not in letters_used:
+                    letters_used.append(test[a])
             if test == key:
                 correct(key, test, words, tries)
             tries -= 1
