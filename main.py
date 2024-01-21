@@ -17,7 +17,9 @@ clear_screen()
 
 #print out main menu
 def print_menu():
-    print("Welcome to \033[32mPYDLE\033[0m")
+    green()
+    print_logo()
+    reset()
     print("select and press enter to continue:")
     print("1: start a new game")
     print("2: view scoreboard")
