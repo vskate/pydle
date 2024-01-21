@@ -1,5 +1,6 @@
 import random
 from colors import *
+from scoreboard import *
 
 #list of valid words
 valid = open("valid-wordle-words.txt", "r").read()
@@ -35,7 +36,7 @@ def print_tries(words, key):
         curr = []
         for j in range(len(i)):
             curr.append(i[j])
-        for x in range(5):
+        for x in range(len(curr)):
             if curr[x] in key:
                 if curr[x] == key[x]:
                     green()
@@ -63,6 +64,9 @@ def correct(key, test, words, tries):
     print("list of words tried: ")
     print_tries(words, key)
 
+    print("Insert your name: ", end="")
+    write_data(input(), 6-tries, key, words)
+
     print("Type anything to go back to the menu: ", end="")
     input()
 
@@ -76,7 +80,7 @@ def game():
     
     tries = 6
     letters_used = []
-    words = []
+    words = ()
 
     while tries > 0 :
         clear_screen()
@@ -90,7 +94,7 @@ def game():
             return True, key, test, words, tries
         
         if test in valid and len(test)==5:
-            words.append(test)
+            words = words + (test,)
             for a in range(len(test)):
                 if test[a] not in letters_used:
                     letters_used.append(test[a])
@@ -110,8 +114,12 @@ def game():
     print("Your guesses:")
     print_tries(words, key)
 
+    print("Insert your name: ", end="")
+    write_data(input(), 6-tries, key, words)
+
     print("press any key to go back to the menu: ", end="")
     input()
+    
     return False, key, test, words, tries
 
         
