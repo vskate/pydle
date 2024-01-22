@@ -144,6 +144,3 @@ while True:
     else:
         clear_screen()
         print("Incorrect option")
-
-
-
