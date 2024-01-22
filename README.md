@@ -33,12 +33,12 @@ The game was written as a Project for my Introduction to Programming class at Un
 - [x] ~~Własne funkcje~~
 - [ ] testy
 - [x] ~~listy~~
-- [ ] krotki
-- [ ] slowniki
-- [ ] scoreboard
+- [x] krotki
+- [x] slowniki
+- [x] scoreboard
 - [x] ~~odczyt i **zapis** do pliku~~
-- [ ] algorytm
-- [ ] kompletnosc
+- [x] algorytm
+- [x] kompletnosc
 
 ### Code Examples:
 
