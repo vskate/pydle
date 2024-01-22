@@ -10,7 +10,7 @@ csvfile = open(filename, "r+")
 
 def scoreboard():
     #clear_screen()
-    data = read_data()
+    data = read_data('score.csv')
 
     dict_ls = []
 
@@ -31,18 +31,16 @@ def scoreboard():
 
     input("Input anything to continue: ")
 
-def read_data():
-    global filename
-    global csvfile
+def read_data(filename):
+    csvfile = open(filename, "r+")
 
     csvreader = csv.reader(csvfile)
 
     return csvreader
         
 
-def write_data(name, tries, key, words):
-    global filename
-    global csvfile
+def write_data(name, tries, key, words, filename):
+    csvfile = open(filename, "r+")
 
     data = {'name': name, 'tries': tries, 'key': key, 'words': words}
     

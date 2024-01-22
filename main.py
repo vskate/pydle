@@ -117,7 +117,7 @@ def game():
     print_tries(words, key)
 
     print("Insert your name: ", end="")
-    write_data(input(), 6-tries, key, words)
+    write_data(input(), 6-tries, key, words, 'score.csv')
 
     print("press any key to go back to the menu: ", end="")
     input()
