@@ -1,11 +1,9 @@
 import pytest
 import csv
 import tempfile
-import io
-import sys
-#from main import *
 from utils import *
 from scoreboard import *
+from printout import print_tries
 
 def test_bubble_sort_dicts():
     data = [
@@ -27,7 +25,6 @@ def test_write_data():
     with tempfile.NamedTemporaryFile(mode='w+', delete=False) as csvfile:
         filename = csvfile.name
 
-        # Call the function with test data
         write_data('test_name', 1, 'test_key', 'test_words', filename)
 
         # Reset the file pointer to the beginning
@@ -36,6 +33,7 @@ def test_write_data():
         # Read the file and check
         reader = csv.reader(csvfile)
         row = next(reader)
+    
         assert row == ['test_name', '1', 'test_key', 'test_words']
 
 
@@ -52,3 +50,12 @@ def test_read_data():
     # Read the first row from the csv reader
     row = next(csvreader)
     assert row == ['test_name', '1', 'test_key', 'test_words']
+
+def test_print_tries(capsys):
+    words = ("apple", "grape", "berry")
+    key = "grape"
+    
+    print_tries(words, key)
+    
+    captured = capsys.readouterr()
+    assert captured.out != ""

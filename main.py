@@ -1,6 +1,7 @@
 import random
 from colors import *
 from scoreboard import *
+from printout import *
 
 #list of valid words
 valid = open("valid-wordle-words.txt", "r").read()
@@ -11,47 +12,7 @@ wordle_ls = []
 for i in f:
     wordle_ls.append(i[:-1])
 
-#word = input("input a word: ")
-
 clear_screen()
-
-#print out main menu
-def print_menu():
-    green()
-    print_logo()
-    reset()
-    print("select and press enter to continue:")
-    print("1: start a new game")
-    print("2: view scoreboard")
-    print("q: exit")
-
-def print_game_menu(tries, letters_used):
-    print(f"Tries left: {tries}")
-    print("Letters used: ", end="")
-    letters_used.sort()
-    for a in letters_used:
-        print(a, end=" ")
-    print("\n")
-
-def print_tries(words, key):
-    for i in words:
-        curr = []
-        for j in range(len(i)):
-            curr.append(i[j])
-        for x in range(len(curr)):
-            if curr[x] in key:
-                if curr[x] == key[x]:
-                    green()
-                    print(curr[x], end=" ")
-                    reset()
-                else:
-                    yellow()
-                    print(curr[x], end=" ")
-                    reset()
-            else:
-                print(curr[x], end=" ")
-        print("")
-
 
 def correct(key, test, words, tries):
     won_in = 6 - tries
@@ -67,14 +28,10 @@ def correct(key, test, words, tries):
     print_tries(words, key)
 
     print("Insert your name: ", end="")
-    write_data(input(), 6-tries, key, words)
+    write_data(input(), 6-tries, key, words, 'score.csv')
 
     print("Type anything to go back to the menu: ", end="")
     input()
-
-
-
-
 
 def game():
     
@@ -123,10 +80,7 @@ def game():
     input()
     
     return False, key, test, words, tries
-
-        
               
-
 while True:
     clear_screen()
     print_menu()

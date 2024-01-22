@@ -21,7 +21,7 @@ def scoreboard():
 
     dict_ls = bubble_sort_dicts(dict_ls, 'tries') #sort the dictionaries by the 'tries' key
 
-    for i in range(len(dict_ls)):
+    for i in range(5):
         print(f"{i+1}. Name: {dict_ls[i]['name']} tries: {dict_ls[i]['tries']} key: {dict_ls[i]['key']}")
         words = ast.literal_eval(dict_ls[i]['words'])
         print("    Words tried:")
@@ -40,13 +40,10 @@ def read_data(filename):
         
 
 def write_data(name, tries, key, words, filename):
-    csvfile = open(filename, "r+")
+    csvfile = open(filename, "a+")
 
     data = {'name': name, 'tries': tries, 'key': key, 'words': words}
     
     csvwriter = csv.writer(csvfile)
 
     csvwriter.writerow(data.values())
-
-def print_scoreboard():
-    pass
